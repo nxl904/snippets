@@ -22,9 +22,9 @@ def get(name):
     """Retrieve the snippet with a given name. """
     logging.error("FIXME: Unimplemented - get({!r})".format(name))
     cursor = connection.cursor()
-    command = "select snippets for given keyword (%s)"
-    cursor.execute("SELECT * FROM snippets")
-    records = cursor.fetchall()
+    #command = "insert into snippets (%s)"
+    cursor.execute('select* from snippets where keyword = (%s)',(name,))
+    records = cursor.fetchone()
     logging.debug("Snippet effectively retrieved")
     print(records)
     
